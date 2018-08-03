@@ -9,7 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    //MARK: Properties
+    @IBOutlet weak var lastClick: UILabel!
+    @IBOutlet weak var signOffbtn: UIButton!
+    var startTime = Date()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +27,29 @@ class ViewController: UIViewController {
     }
 
 
+    // Mark: Actions
+    @IBAction func signoff(_ sender: UIButton) {
+        if signOffbtn.title(for: .normal)=="Done" {
+            signOffbtn.setTitle("SignOff", for: .normal)
+            
+            let currentTime = Date().timeIntervalSince(startTime)
+            lastClick.text = currentTime.rounded().description
+            
+            
+            
+            
+        } else {
+            signOffbtn.setTitle("Done", for: .normal)
+            lastClick.text = "signed off seconds will show when you click Done"
+            startTime = Date()
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 }
 
