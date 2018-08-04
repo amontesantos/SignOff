@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
 
 
-    // Mark: Actions
+    // MARK: Actions
     @IBAction func signoff(_ sender: UIButton) {
         if signOffbtn.title(for: .normal)=="Done" {
             signOffbtn.setTitle("SignOff", for: .normal)
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         }
         
         
+        // MARK: new function
         
         
         
