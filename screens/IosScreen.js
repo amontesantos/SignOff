@@ -6,7 +6,7 @@ import globalStyles from '../assets/styles/globalStyles';
 
 export default function IosScreen() {
   return (
-    <View style={globalStyles.container}>
+    <View style={globalStyles.padded}>
       <IosContent />
     </View>
   );

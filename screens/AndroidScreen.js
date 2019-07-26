@@ -6,7 +6,7 @@ import globalStyles from '../assets/styles/globalStyles';
 
 export default function AndroidScreen() {
   return (
-    <View style={globalStyles.container}>
+    <View style={globalStyles.padded}>
       <AndroidContent />
     </View>
   );
