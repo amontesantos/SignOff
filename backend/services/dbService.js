@@ -1,7 +1,7 @@
 import User from '../models/user';
 import ResponseClass from '../classes/response';
 
-export const getUser = async (email) =>  {
+exports.getUser = async (email) =>  {
     let result, error = null;
     try {
         result = await User.findOne({ email }).exec();
@@ -11,7 +11,7 @@ export const getUser = async (email) =>  {
     return new ResponseClass(result, error);
 }
 
-export const createUser = async (userClass) => {
+exports.createUser = async (userClass) => {
     let result, error = null;
     const newUser = new User({
         firstName: userClass.firstName,
@@ -27,7 +27,7 @@ export const createUser = async (userClass) => {
     return new ResponseClass(result, error);
 }
 
-export const deleteUser = async (email) => {
+exports.deleteUser = async (email) => {
     let result, error = null;
     try {
         result = await User.findOneAndDelete({ email }).exec();
