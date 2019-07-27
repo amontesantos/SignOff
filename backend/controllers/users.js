@@ -1,11 +1,16 @@
-import { createUser, deleteUser } from '../services/dbService';
+import { getUser, createUser, deleteUser } from '../services/dbService';
 
-exports.createUser = (newUser) => {
-    const err = createUser(newUser);
-    return err;
+exports.getUser = async (email) => {
+    const result = await getUser(email);
+    return result;
 }
 
-exports.deleteUser = (email) => {
-    const success = deleteUser(email);
-    return success;
+exports.createUser = async (newUser) => {
+    const result = await createUser(newUser);
+    return result;
+}
+
+exports.deleteUser = async (email) => {
+    const result = await deleteUser(email);
+    return result;
 }

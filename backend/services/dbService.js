@@ -1,25 +1,38 @@
 import User from '../models/user';
+import ResponseClass from '../classes/response';
 
-export const createUser = (userClass) => {
-    let error = null;
+export const getUser = async (email) =>  {
+    let result, error = null;
+    try {
+        result = await User.findOne({ email }).exec();
+    } catch (err) {
+        error = err;
+    }
+    return new ResponseClass(result, error);
+}
+
+export const createUser = async (userClass) => {
+    let result, error = null;
     const newUser = new User({
         firstName: userClass.firstName,
         lastName: userClass.lastName,
         email: userClass.email,
         password: userClass.password
     });
-    newUser.save(err => {
+    try {
+        result = await newUser.save();
+    } catch (err) {
         error = err;
-    });
-    return error;
+    }
+    return new ResponseClass(result, error);
 }
 
-export const deleteUser = (email) => {
-    let success = false;
-    User.findOneAndDelete({ email }, err => {
-        if (!err) {
-            success = true
-        }
-    });
-    return success;
+export const deleteUser = async (email) => {
+    let result, error = null;
+    try {
+        result = await User.findOneAndDelete({ email }).exec();
+    } catch (err) {
+        error = err;
+    }
+    return new ResponseClass(result, error);
 }
