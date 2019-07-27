@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default globalStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
     h1: {
         fontSize: 21,
@@ -16,5 +16,8 @@ export default globalStyles = StyleSheet.create({
     },
     padded: {
         padding: 25
+    },
+    primaryFont: {
+        fontFamily: 'space-mono'
     }
 })

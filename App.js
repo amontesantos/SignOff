@@ -20,7 +20,7 @@ export default function App(props) {
     );
   } else {
     return (
-      <View style={globalStyles.container}>
+      <View style={[globalStyles.container, globalStyles.primaryFont]}>
         <AppNavigator />
       </View>
     );
