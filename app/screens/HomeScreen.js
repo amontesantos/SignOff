@@ -17,7 +17,6 @@ export default function HomeScreen(props) {
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SignOff",
-    "slug": "signoff",
+    "slug": "SignOff",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
