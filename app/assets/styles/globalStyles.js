@@ -1,9 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import { Constants } from 'expo';
 
 export default globalStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
     },
     h1: {
         fontSize: 21,
@@ -17,7 +18,4 @@ export default globalStyles = StyleSheet.create({
     padded: {
         padding: 25
     },
-    primaryFont: {
-        fontFamily: 'space-mono'
-    }
 })
