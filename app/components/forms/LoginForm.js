@@ -1,5 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView, StyleSheet, TouchableOpacity, Text, Platform } from 'react-native';
+import axios from 'axios';
 
 import UserInput from '../../components/UserInput';
 
@@ -21,21 +22,29 @@ export default class LoginForm extends React.Component {
         this.setState({ password: str });
     }
 
-    async onSubmit() {
+    onSubmit() {
         const { email, password } = this.state;
-        const response = await fetch('192.168.43.21:3001/api/auth/login', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email,
-                password
+        axios.post('192.168.43.21:3001/api/auth/login', { email, password })
+            .then(res => {
+                const valid = res.data;
+                if (valid) {
+                    this.props.navigation.navigate('Main');
+                }
             })
-        }).catch(err => console.log(err));
-        console.log('Response:');
-        console.log(response);
+            .catch(err => {
+                console.log(err);
+            })
+        // const response = await fetch('192.168.43.21:3001/api/auth/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         email,
+        //         password
+        //     })
+        // }).catch(err => console.log(err));
     }
 
     render() {
