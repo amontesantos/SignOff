@@ -17,7 +17,8 @@ exports.createUser = async (userClass) => {
         firstName: userClass.firstName,
         lastName: userClass.lastName,
         email: userClass.email,
-        password: userClass.password
+        salt: userClass.salt,
+        passwordHash: userClass.passwordHash
     });
     try {
         result = await newUser.save();

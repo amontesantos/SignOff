@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import LayoutConstants from '../constants/Layout';
 
 export default class SignupSection extends React.Component {
     render() {
@@ -12,13 +13,11 @@ export default class SignupSection extends React.Component {
     }
 }
 
-const DEVICE_WIDTH = Dimensions.get('window').width;
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         top: 65,
-        width: DEVICE_WIDTH,
+        width: LayoutConstants.window.width,
         flexDirection: 'row',
         justifyContent: 'space-around'
     },

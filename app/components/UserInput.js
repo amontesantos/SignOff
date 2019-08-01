@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import LayoutConstants from '../constants/Layout';
 
 export default class UserInput extends React.Component {
 
@@ -57,12 +58,10 @@ UserInput.propTypes = {
     returnKeyType: PropTypes.string,
 }
 
-const DEVICE_WIDTH = Dimensions.get('window').width;
-
 const styles = StyleSheet.create({
     input: {
         backgroundColor: 'rgba(255, 255, 255, 0.4)',
-        width: DEVICE_WIDTH - 40,
+        width: LayoutConstants.window.width - 40,
         height: 40,
         marginHorizontal: 20,
         paddingLeft: 45,

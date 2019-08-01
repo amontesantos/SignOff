@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import express from 'express';
 
 import userRouter from './routers/userRouter';
+import authenticationRouter from './routers/authenticationRouter';
 
 const API_PORT = 3001;
 
@@ -19,5 +20,6 @@ db.on('error', () => console.error.bind(console, 'MongoDb connection error:'));
 
 app.use('/api', mainRouter);
 mainRouter.use('/user', userRouter);
+mainRouter.use('/auth', authenticationRouter);
 
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT${API_PORT}`));
