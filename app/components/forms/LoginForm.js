@@ -13,9 +13,17 @@ export default class LoginForm extends React.Component {
         }
     }
 
+    onEmailChange(str) {
+        this.setState({ email: str });
+    }
+
+    onPasswordChange(str) {
+        this.setState({ password: str });
+    }
+
     async onSubmit() {
         const { email, password } = this.state;
-        const response = fetch('127.0.0.1:3001/api/login', {
+        const response = await fetch('192.168.43.21:3001/api/auth/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -25,7 +33,8 @@ export default class LoginForm extends React.Component {
                 email,
                 password
             })
-        });
+        }).catch(err => console.log(err));
+        console.log('Response:');
         console.log(response);
     }
 
@@ -39,6 +48,7 @@ export default class LoginForm extends React.Component {
                     autoCapitalize={'none'}
                     returnKeyType={'done'}
                     autoCorrect={false}
+                    onChangeText={this.onEmailChange.bind(this)}
                 />
                 <UserInput
                     name='password'
@@ -48,6 +58,7 @@ export default class LoginForm extends React.Component {
                     returnKeyType={'done'}
                     autoCorrect={false}
                     toggleHide={true}
+                    onChangeText={this.onPasswordChange.bind(this)}
                 />
                 <TouchableOpacity 
                     style={styles.button}

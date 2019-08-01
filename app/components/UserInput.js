@@ -30,6 +30,7 @@ export default class UserInput extends React.Component {
                     returnKeyType={this.props.returnKeyType}
                     placeholderTextColor='rgba(255, 255, 255, 0.7)'
                     underlineColorAndroid='transparent'
+                    onChangeText={(str) => this.props.onChangeText(str)}
                 />
                 <TouchableOpacity
                     activeOpacity={0.7}
@@ -52,10 +53,11 @@ export default class UserInput extends React.Component {
 UserInput.propTypes = {
     source: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
+    onChangeText: PropTypes.func.isRequired,
     toggleHide: PropTypes.bool,
     autoCorrect: PropTypes.bool,
     autoCapitalize: PropTypes.string,
-    returnKeyType: PropTypes.string,
+    returnKeyType: PropTypes.string
 }
 
 const styles = StyleSheet.create({
