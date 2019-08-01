@@ -24,27 +24,23 @@ export default class LoginForm extends React.Component {
 
     onSubmit() {
         const { email, password } = this.state;
-        axios.post('192.168.43.21:3001/api/auth/login', { email, password })
-            .then(res => {
-                const valid = res.data;
-                if (valid) {
-                    this.props.navigation.navigate('Main');
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        // const response = await fetch('192.168.43.21:3001/api/auth/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         Accept: 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         email,
-        //         password
-        //     })
-        // }).catch(err => console.log(err));
+        axios({
+            method: 'POST',
+            url: '192.168.43.21:3001/api/auth/login',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: { email, password },
+        })
+        .then(res => {
+            const valid = res.data;
+            if (valid) {
+                this.props.navigation.navigate('Main');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
     render() {
