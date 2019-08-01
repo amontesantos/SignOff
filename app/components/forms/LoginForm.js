@@ -1,10 +1,11 @@
 import React from 'react';
 import { KeyboardAvoidingView, StyleSheet, TouchableOpacity, Text, Platform } from 'react-native';
 import axios from 'axios';
+import { withNavigation } from 'react-navigation';
 
 import UserInput from '../../components/UserInput';
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,14 +27,14 @@ export default class LoginForm extends React.Component {
         const { email, password } = this.state;
         axios({
             method: 'POST',
-            url: '192.168.43.21:3001/api/auth/login',
+            url: 'http://10.0.0.239:3001/api/auth/login',
             headers: {
                 'Content-Type': 'application/json'
             },
             data: { email, password },
         })
         .then(res => {
-            const valid = res.data;
+            const valid = res.data.result;
             if (valid) {
                 this.props.navigation.navigate('Main');
             }
@@ -102,3 +103,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     }
 });
+
+export default withNavigation(LoginForm);
