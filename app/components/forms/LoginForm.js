@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardAvoidingView, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, TouchableOpacity, Text, Platform } from 'react-native';
 
 import UserInput from '../../components/UserInput';
 
@@ -40,7 +40,11 @@ export default class LoginForm extends React.Component {
 
     render() {
         return (
-            <KeyboardAvoidingView behavior='position' style={styles.container}>
+            <KeyboardAvoidingView 
+                style={styles.container}
+                behavior={'position'}
+                keyboardVerticalOffset={Platform.select({ios: 0, android: -35})}
+            >
                 <UserInput
                     name='email'
                     source='md-mail'
@@ -63,7 +67,7 @@ export default class LoginForm extends React.Component {
                 <TouchableOpacity 
                     style={styles.button}
                     onPress={() => this.onSubmit()}
-                    activeOpacity={1}
+                    activeOpacity={0.8}
                 >
                     <Text style={styles.text}>Login</Text>
                 </TouchableOpacity>
@@ -76,12 +80,13 @@ export default class LoginForm extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#E30BD1',
+        backgroundColor: 'rgba(10, 213, 189, 0.7)',
         borderRadius: 20,
         zIndex: 100,
         height: 40,
