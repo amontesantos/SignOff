@@ -1,12 +1,24 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { withNavigation } from 'react-navigation';
+
 import LayoutConstants from '../constants/Layout';
 
-export default class SignupSection extends React.Component {
+class SignupSection extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Create Account</Text>
+                <Text 
+                    style={styles.text}
+                    onPress={() => this.props.navigation.navigate('Register')}
+                >
+                    Create Account
+                </Text>
                 <Text style={styles.text}>Forgot Password?</Text>
             </View>
         );
@@ -26,3 +38,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent'
     }
 });
+
+export default withNavigation(SignupSection);
